@@ -1,0 +1,6 @@
+---
+title: "About My Website"
+output: html_document
+---
+
+This website was created as a space to publish my projects for Coursera / John Hopkins Developing Data Products course.
