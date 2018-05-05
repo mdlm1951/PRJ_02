@@ -1,0 +1,41 @@
+---
+title: "Developing Data Products Week 3 Project: Plotly Demo"
+author: "Mark De La Mater"
+date: "April 28, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+## The chart shows the relationship between Gross Horsepower and Engine Displacement when controlling for Number of Cylinders
+### The data comes from the the mtcars dataset included with the ggplot2 package
+
+```{r main, echo = FALSE, plotly = TRUE}
+library(tidyverse)
+library(plotly)
+
+df <- mtcars
+df$cyl <- as.factor(df$cyl)
+
+g <- ggplot(data = df, aes(x = disp, y = hp, color = cyl)) +
+     geom_point(size = 3) +
+     geom_smooth() + 
+     geom_smooth(method = "lm", se = FALSE) + 
+     labs(title = "Gross Horsepower vs. Engine Displacement", subtitle = "By Number of Cylinders") +
+     labs(x = "Engine Displacement (cubic inches)", y = "Gross Horsepower") +
+     theme(plot.title = element_text(size = 14, color = "blue", hjust = 0.5)) + 
+     theme(plot.subtitle = element_text(size = 10, color = "black", hjust = 0.5))
+
+p_plotly <- ggplotly(g)
+
+p_plotly
+
+
+
+
+
+
+```
+
